@@ -15,10 +15,7 @@ print(f'La lettera "{my_p}" è contenuta {conta_lettere(my_p, my_word)} volte in
 
 print('Esercizio 3')
 def palindromo(my_word):
-        for i in range(len(my_word)//2):
-             if my_word[i]!=my_word[-(i + 1)]:
-                  return False
-        return True
+     return my_word == my_word[::-1]
 
 if palindromo(my_word)==False:
      print(f'La stringa "{my_word}" non è palindroma')
