@@ -1,5 +1,5 @@
 print('Esercizio 1')
-print('Lequivalente di {A} minuti è {B}h:{C}min'.format(A=538,B=12,C=32))
+print(f'Lequivalente di 538 minuti è {538//60}h:{538%60}min')
 print('Esercizio 2')
 my_p = 'a'
 my_word = "abba"
@@ -9,9 +9,9 @@ def conta_lettere(my_p, my_word):
     for i in my_word:
         if i == my_p:  
             my_val += 1
-    print(f'La lettera "{my_p}" è contenuta {my_val} volte in "{my_word}"')
+    return my_val
 
-conta_lettere(my_p, my_word)
+print(f'La lettera "{my_p}" è contenuta {conta_lettere(my_p, my_word)} volte in "{my_word}"')
 
 print('Esercizio 3')
 def palindromo(my_word):
@@ -83,26 +83,11 @@ else:
   
 print('Esercizio 8')
 my_list3 = [1,1,1,2]
-def danum_alet(my_list3):
-    for index in range(len(my_list3)):  # Loop over the indices
-        if my_list3[index] == 1:
-            my_list3[index] = 'uno'
-        elif my_list3[index] == 2:
-            my_list3[index] = 'due'
-        elif my_list3[index] == 3:
-            my_list3[index] = 'tre'
-        elif my_list3[index] == 4:
-            my_list3[index] = 'quattro'
-        elif my_list3[index] == 5:
-            my_list3[index] = 'cinque'
-        elif my_list3[index] == 6:
-            my_list3[index] = 'sei'
-        elif my_list3[index] == 7:
-            my_list3[index] = 'sette'
-        elif my_list3[index] == 8:
-            my_list3[index] = 'otto'
-        elif my_list3[index] == 9:
-            my_list3[index] = 'nove'
-    return my_list3
+def num_let(my_list3):
+     string3 = []
+     dizionario_numeri_stringhe = {0:"0", 1:"1", 2:"2", 3:"3", 4:"4", 5:"5", 6:"6", 7:"7", 8:"8", 9:"9"}
+     for numero in my_list3:
+          string3.append(dizionario_numeri_stringhe[numero])
+     return string3
 
-print(f'Valori numerici: {my_list3}; valori in lettera: {danum_alet(my_list3)}')
+print(f'Nuova stringa: {num_let(my_list3)}')
