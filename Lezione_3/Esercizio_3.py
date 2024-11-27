@@ -1,11 +1,12 @@
-print('Esercizio 3: creare un dizionario con key le iniziali di ogni parola e value le parole più lunghe che cominciano con quella lettera')
+# print('Esercizio 3: creare un dizionario con key le iniziali di ogni parola e value le parole più lunghe che cominciano con quella lettera')
 
 def openFile(path_file):
     phrases = []
     with open(path_file, 'r') as my_file:
         for line in my_file:
+            line = line.replace('?', ' ').replace('!', ' ').replace('.',' ')
             elements = line.strip().split(' ')
-            phrases.append(elements)
+            phrases.extend(elements)
     return phrases
 
 def word_lenght(phrases):
@@ -18,4 +19,6 @@ def word_lenght(phrases):
     return words
 
 phrases = openFile('Prova.txt')
+print(f'{phrases}')
 dictionary = word_lenght(phrases)
+print(f'{dictionary}')
