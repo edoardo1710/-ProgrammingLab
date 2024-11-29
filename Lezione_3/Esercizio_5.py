@@ -22,9 +22,8 @@ def duplicate(sentences):
             
 
 sentences = openFile('Prova.txt')
-print(f'{sentences}')
 new_sentences = duplicate(sentences)
-print(f'{new_sentences}')
-# my_file = open('unique.txt', 'a')
-# my_file.write(new_sentences)
-# my_file.close
+with open('unique.txt', 'w') as file_unique:
+        for riga in new_sentences:
+            file_unique.write(riga + '\n')
+file_unique.close()
