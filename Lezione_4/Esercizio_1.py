@@ -1,4 +1,4 @@
-print('Esercizio 1: creare un oggetto CSVFile')
+# print('Esercizio 1: creare un oggetto CSVFile')
 
 class CSVFile ():
     
@@ -19,8 +19,8 @@ class CSVFile ():
                     phrases.append(elements)
         return phrases
 
-file = CSVFile('shampoo_sales.csv')
-print(f'{file.get_data()}')
+# file = CSVFile('shampoo_sales.csv')
+# print(f'{file.get_data()}')
 
     
         
