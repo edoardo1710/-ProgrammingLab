@@ -1,4 +1,4 @@
-# print('Esercizio 1: conta quante volte una lettera è presente nel file')
+print('Esercizio 1: conta quante volte una lettera è presente nel file')
 
 phrases = []
 with open('Prova.txt', 'r') as my_file:
@@ -7,7 +7,7 @@ with open('Prova.txt', 'r') as my_file:
         if elements[0] != 'Date':
             phrases.extend(elements)
 
-# my_word = 'c'
+my_word = 'c'
 
 def conta_parole(phrases, my_word):
     count = 0
@@ -15,4 +15,4 @@ def conta_parole(phrases, my_word):
         count += phrase.count(my_word)
     return count
 
-# print(f'La lettera "{my_word}" è stata trovata {conta_parole(phrases, my_word)} volte.')
+print(f'La lettera "{my_word}" è stata trovata {conta_parole(phrases, my_word)} volte.')

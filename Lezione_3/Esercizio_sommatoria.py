@@ -1,4 +1,4 @@
-print('Esercizio di prova: definire una funzione che sommi i valori di tutte le vendite presenti nel file')
+# print('Esercizio di prova: definire una funzione che sommi i valori di tutte le vendite presenti nel file')
 
 values = []
 my_file = open('shampoo_sales.csv', 'r')
@@ -16,4 +16,4 @@ def sum_csv(values):
         total += i
     return total
 
-print(f'Valori vendite: {sum_csv(values)}')
+# print(f'Valori vendite: {sum_csv(values)}')
