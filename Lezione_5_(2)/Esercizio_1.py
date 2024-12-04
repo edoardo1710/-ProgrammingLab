@@ -14,8 +14,32 @@ class CSVFile ():
         
         return 'File: "{}"'.format(self.name)
     
-    def get_data(self,start,end):
+    def get_length(self):
 
+        try:
+            file_parametro = open(self.name)
+            parametro_come_stringa = file_parametro.read()
+        except FileNotFoundError as e:
+            print("File non trovato")
+            print("Verrà utilizzato il file 'shampoo_sales.csv'")
+            phrases = []
+            with open('shampoo_sales.csv', 'r') as my_file:
+                for line in my_file:
+                    elements = line.strip().split(',')
+                    if elements[0] != 'Date':
+                        phrases.append(elements)
+            return len(phrases)
+        else:
+            phrases = []
+            with open(self.name, 'r') as my_file:
+                for line in my_file:
+                    elements = line.strip().split(',')
+                    if elements[0] != 'Date':
+                        phrases.append(elements)
+            return len(phrases)
+
+    def get_data(self,start,end):
+        
         try:
             file_parametro = open(self.name)
             parametro_come_stringa = file_parametro.read()
@@ -58,7 +82,8 @@ end_str = input("Inserisci l'arrivo: ")
 end = int(end_str)
 if end<start:
     raise Exception("Il valore della partenza deve essere minore di quello dell'arrivo")
-elif start<0
+elif start<0:
     raise Exception("Valore di partenza indefinito")
-# elif end>fil
+elif end>(file.get_length()):
+    raise Exception("Valore di arrivo indefinito")
 print(f'{file.get_data(start,end)}')
