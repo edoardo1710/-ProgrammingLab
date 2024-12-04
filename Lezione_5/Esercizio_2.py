@@ -44,4 +44,19 @@ class NumericalCSVFile(CSVFile):
         
         return super().__str__
     
+    def get_data2(self):
+
+        values = []
+        origin_list = super().get_data()
+        for line in origin_list:
+            if line[0] != 'Date': 
+                try:
+                    value = float(line[1])
+                    values.append([line[0], value])
+                except ValueError as e: 
+                    print('Errore nel convertire il valore:', line[1])
+                    print('La linea verrà saltata')
+        return values
     
+file = NumericalCSVFile('shampoo_sales.csv')
+print(f'{file.get_data2()}')
