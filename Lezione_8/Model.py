@@ -9,3 +9,6 @@ class Model():
 
         raise NotImplementedError('Metodo non implementato')
     
+
+        
+    
