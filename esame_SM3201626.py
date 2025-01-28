@@ -27,7 +27,7 @@ class CSVTimeSeriesFile():
             lista di liste contentente, per ogni elemento, una riga del file
         """
         try:
-            open(self.file_name, 'r')
+            file = open(self.file_name, 'r')
         except:
             raise ExamException("Errore nell'apertura del file")
         
@@ -55,6 +55,7 @@ class CSVTimeSeriesFile():
                         elements[1] = int(elements[1])
                         time_series_list.append(elements)
         
+        file.close()
         return time_series_list
 
 def media(list):
@@ -89,12 +90,12 @@ def compute_variations(time_series, first_year, last_year):
     """
     try:
         first_year = int(first_year)
-    except:
+    except ValueError:
         raise ExamException("Valore inserito per il primo anno non valido")
     
     try:
         last_year = int(last_year)
-    except:
+    except ValueError:
         raise ExamException("Valore inserito per l'ultimo anno non valido")
 
     control_1 = time_series[0]
@@ -180,4 +181,3 @@ def compute_variations(time_series, first_year, last_year):
                 i = j+1
 
     return my_dictionary
-
