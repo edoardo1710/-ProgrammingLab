@@ -115,8 +115,8 @@ def compute_variations(time_series, first_year, last_year):
     years_averages = []
 
     i = 0
-    list_control = []
     while first_year <= last_year:
+        list_control = []
         check_years_1 = time_series[i]
         check_years_2 = check_years_1[0] # Indicatore dell'anno
 
