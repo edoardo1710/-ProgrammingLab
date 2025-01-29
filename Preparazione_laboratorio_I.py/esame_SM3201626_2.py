@@ -45,13 +45,15 @@ class CSVTemperatureFile():
         # Controllo: se il file non è apribile alza un'eccezzione
         try:
             file = open(self.file_name, 'r')
-        except:
+        except IOError:
             raise ExamException("Errore nell'apertura del file")
+        except FileNotFoundError:
+            raise ExamException("Il file non esiste")
         
         # Controllo: se il file non è leggibile alza un'eccezzione
         try:
             data = file.read().splitlines()
-        except:
+        except IOError:
             raise ExamException("Errore nella lettura del file")
 
         # 'temperature_file_list' è la lista di liste
