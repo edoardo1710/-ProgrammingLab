@@ -12,7 +12,7 @@ class CSVTimeSeriesFile():
         """
 
         if not isinstance(file_name, str):
-            raise ExamException("Il parametro passato non è del tipo richiuesto, ci si aspetta una stringa (path del file).")
+            raise ExamException("Il parametro passato non è del tipo richiesto, ci si aspetta una stringa (path del file).")
 
         self.file_name = file_name
         
@@ -35,7 +35,6 @@ class CSVTimeSeriesFile():
         except:
             raise ExamException("Errore nell'apertura del file")
         
-
         try:
             data = file.read().splitlines()
         except:
