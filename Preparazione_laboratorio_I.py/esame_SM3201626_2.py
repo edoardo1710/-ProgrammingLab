@@ -1,4 +1,3 @@
-
 class ExamException(Exception):
     pass
 
@@ -156,39 +155,41 @@ def compute_temperature_variations(temperature_series, first_year, last_year):
     # 'data_average_list' contiene la temperatura media di tutti gli anni compresi tra 'first_year' e 'last_year'
     data_average_list = []
 
-    i = 0
+    # 'temperature_series_iter' è l'iteratore di 'temperature_series'
+    temperature_series_iter = iter(temperature_series)
+
     while first_year <= last_year:
-        # print(f"{first_year}")
-
-        # Controllo: se all'incremento di 'i' si verifica un 'IndexError' vuol dire che abbiamo "analizzato" tutti i dati
+        # Controllo: se si verifica un 'StopIteration' vuol dire che abbiamo "analizzato" tutti i dati
         try:
-            control = temperature_series[i]
-        except IndexError:
+            item = next(temperature_series_iter)
+        except StopIteration:
             break
-        
-        # Se 'temperature_series[i][0][:4]', che rappresenta l'anno a cui "punta" l'elemento di 'temperature_series', è minore di 'first_year' allora incrementiamo 'i'
-        if int(temperature_series[i][0][:4]) < first_year:
-            i += 1
-        # Se 'temperature_series[i][0][:4]', che rappresenta l'anno a cui "punta" l'elemento di 'temperature_series', è uguale a 'first_year' possiamo cominciare ad analizzare i dati
-        elif int(temperature_series[i][0][:4]) == first_year:
+
+        current_year = int(item[0][:4])
+
+        # Se 'current_year' è minore di 'first_year' allora continuiamo con il prossimo elemento
+        if current_year < first_year:
+            continue
+        # Se 'current_year' è uguale a 'first_year' possiamo cominciare ad analizzare i dati
+        elif current_year == first_year:
             # 'temp_data_list' contiene tutti i valori di 'temperature' di un singolo anno
-            temp_data_list = [] 
+            temp_data_list = []
 
-            while int(temperature_series[i][0][:4]) == first_year:
-                temp_data_list.append(temperature_series[i][1])
+            while current_year == first_year:
+                temp_data_list.append(item[1])
 
-                # Controllo: se all'incremento di 'i' si verifica un 'IndexError' vuol dire che abbiamo "analizzato" tutti i dati
+                # Controllo: se si verifica un 'StopIteration' vuol dire che abbiamo "analizzato" tutti i dati
                 try:
-                    i +=1
-                    control = temperature_series[i]
-                except IndexError:
+                    item = next(temperature_series_iter)
+                    current_year = int(item[0][:4])
+                except StopIteration:
                     break
-            
+
             # All'uscita dal ciclo 'while' viene incrementato 'first_year' e viene aggiunta la media a 'data_average_list'
             data_average_list.append([str(first_year), average(temp_data_list)])
             first_year += 1
-        # Se 'temperature_series[i][0][:4]', che rappresenta l'anno a cui "punta" l'elemento di 'temperature_series', è maggiore di 'first_year' allora c'è un anno senza dati che verrà escluso
-        elif int(temperature_series[i][0][:4]) > first_year:
+        # Se 'current_year' è maggiore di 'first_year' allora c'è un anno senza dati che verrà escluso
+        elif current_year > first_year:
             first_year += 1
     
     temperature_dictionary = {}
