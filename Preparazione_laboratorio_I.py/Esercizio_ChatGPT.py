@@ -178,8 +178,3 @@ for item in lista_vendite:
 
 analizzatore.totale_per_prodotto(lista_vendite)
 analizzatore.incasso_totale(lista_vendite)
-                    
-
-                    
-
-                    
